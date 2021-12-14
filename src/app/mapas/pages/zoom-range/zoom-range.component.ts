@@ -40,6 +40,12 @@ zoomLevel: number =10;
     this.mapa.on('zoom', ()=>{
       this.zoomLevel = this.mapa.getZoom();
     })
+    this.mapa.on('zoomend', ()=>{
+      if(this.mapa.getZoom() > 18){
+        this.mapa.zoomTo(18)
+      }
+      
+    })
   }
 
   zoomOut(){
@@ -50,6 +56,9 @@ zoomLevel: number =10;
   zoomIn(){
     this.mapa.zoomIn();
     this.zoomLevel = this.mapa.getZoom()
+  }
+  zoomCambio(valor:string){
+    this.mapa.zoomTo(Number(valor))
   }
 
 }
