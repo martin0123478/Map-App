@@ -36,6 +36,10 @@ zoomLevel: number =10;
         center:[ -99.29426584506004,19.60728573874393],
         zoom:this.zoomLevel
       });
+
+    this.mapa.on('zoom', ()=>{
+      this.zoomLevel = this.mapa.getZoom();
+    })
   }
 
   zoomOut(){
