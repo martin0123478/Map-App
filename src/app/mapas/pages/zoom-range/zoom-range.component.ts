@@ -5,8 +5,8 @@ import * as mapboxgl from 'mapbox-gl'
   selector: 'app-zoom-range',
   templateUrl: './zoom-range.component.html',
   styles: [
-    `
-    .mapa-container{
+    
+   ` .mapa-container{
       width:100%;
       height:100%;
     }
