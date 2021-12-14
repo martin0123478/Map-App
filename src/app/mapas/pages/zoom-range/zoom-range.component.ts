@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl'
 
 @Component({
@@ -23,13 +23,18 @@ import * as mapboxgl from 'mapbox-gl'
   ]
 
 })
-export class ZoomRangeComponent implements AfterViewInit {
+export class ZoomRangeComponent implements AfterViewInit, OnDestroy {
   @ViewChild('mapa') divMapa!: ElementRef
 mapa!: mapboxgl.Map;
 zoomLevel: number =10;
 center : [number,number] = [ -99.29426584506004,19.60728573874393]
   constructor() { }
 
+  ngOnDestroy(): void {
+      this.mapa.off('zomm', () => {})
+      this.mapa.off('zommend', () => {})
+      this.mapa.off('move', () => {})
+  }
   ngAfterViewInit(): void {
     this.mapa = new mapboxgl.Map({
       container: this.divMapa.nativeElement,
